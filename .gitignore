@@ -1,0 +1,41 @@
+# Archivos de configuración con credenciales sensibles
+config/email-credentials.php
+config/db_local.php
+config/config_local.php
+
+# Logs
+logs/
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de backup
+backup/
+
+# Archivos de prueba
+test-*.php
+debug-*.php
+diagnose-*.php
+
+# Uploads de usuarios
+uploads/payments/*
+!uploads/payments/.gitkeep
+
+# Cache y archivos temporales de PHP
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Variables de entorno
+.env
+.env.local
+.env.production

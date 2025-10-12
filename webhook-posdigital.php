@@ -1,5 +1,6 @@
 <?php
 require_once 'config/db.php';
+require_once 'config/notifications.php';
 
 // Log de webhooks para debugging
 function logWebhook($data) {
@@ -86,6 +87,11 @@ try {
                 WHERE id = ?
             ");
             $stmt->execute([$payment_status, $transaction_id, $user_id]);
+            
+            // Notificar al admin si el pago se completó
+            if ($payment_status === 'completed') {
+                notify_payment_completed($pdo, $user_id, 'PosDigital');
+            }
             
             // Log del procesamiento exitoso
             logWebhook([

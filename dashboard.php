@@ -12,6 +12,9 @@ $stmt = $pdo->prepare("SELECT enrolled, payment_status FROM users WHERE id = ?")
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
 
+// Verificar si es admin
+$is_admin = ($_SESSION['user_id'] == 1);
+
 // Resetear el estado de pago para usuarios nuevos
 if ($user['payment_status'] === NULL) {
     $stmt = $pdo->prepare("UPDATE users SET payment_status = 'pending' WHERE id = ?");
@@ -79,6 +82,18 @@ $pageTitle = 'Dashboard';
             background: #48bb78;
             color: white;
             margin-top: 1rem;
+        }
+
+        .btn-admin {
+            background: #e53e3e;
+            color: white;
+            border: 2px solid #c53030;
+        }
+
+        .btn-admin:hover {
+            background: #c53030;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 48, 48, 0.3);
         }
 
         .btn:hover {
@@ -179,6 +194,16 @@ $pageTitle = 'Dashboard';
             <h1>🐦‍⬛ CrowDojo Academy</h1>
             <p style="color: #667eea; font-size: 1.2rem; margin-bottom: 2rem;">Domina el Arte del Hacking Ético</p>
             
+            <?php if ($is_admin): ?>
+                <div style="background: #fed7d7; color: #c53030; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <strong>🛡️ Modo Administrador</strong>
+                    <br>
+                    <a href="admin/dashboard.php" style="color: #c53030; text-decoration: underline; font-weight: bold;">
+                        Ir al Panel de Administración
+                    </a>
+                </div>
+            <?php endif; ?>
+            
             <?php if ($user['payment_status'] === 'completed'): ?>
                 <div class="course-content">
                     <div class="course-description">
@@ -213,6 +238,11 @@ $pageTitle = 'Dashboard';
                         <a href="course.php" class="btn btn-course">
                             🚀 Entrar al Dojo
                         </a>
+                        <?php if ($is_admin): ?>
+                            <a href="admin/dashboard.php" class="btn btn-admin">
+                                🛡️ Panel de Admin
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -255,6 +285,12 @@ $pageTitle = 'Dashboard';
                         <a href="payment-monitor.php" class="btn btn-enroll">
                             🐦‍⬛ Desbloquear Dojo Completo
                         </a>
+                        
+                        <?php if ($is_admin): ?>
+                            <a href="admin/dashboard.php" class="btn btn-admin">
+                                🛡️ Panel de Admin
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endif; ?>

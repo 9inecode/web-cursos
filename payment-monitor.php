@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'config/db.php';
+require_once 'config/notifications.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -20,6 +21,15 @@ if (!$user) {
 if ($user['payment_status'] === 'completed') {
     header('Location: dashboard.php');
     exit();
+}
+
+// Notificar acceso a página de pago (con backup simplificado)
+try {
+    notify_payment_page_access($pdo, $_SESSION['user_id'], 'Monitor de Pago PosDigital');
+} catch (Exception $e) {
+    // Usar sistema simplificado como backup
+    require_once 'config/simple-notifications.php';
+    notify_simple_payment_access($pdo, $_SESSION['user_id'], 'Monitor de Pago PosDigital');
 }
 
 // URL de pago
@@ -300,6 +310,17 @@ $payment_url = "https://www.posdigital.com.py/payment/operation?hash=1157394";
             if (paymentWindow) {
                 paymentWindowOpened = true;
                 updateStatus('checking', '⏳ Ventana de pago abierta', 'Completa tu pago en la ventana de PosDigital');
+                
+                // Notificar al admin que se abrió la ventana de pago
+                fetch('notify-payment-action.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'payment_window_opened'
+                    })
+                }).catch(err => console.log('Notification error:', err));
                 
                 // Habilitar botón de verificación
                 document.getElementById('checkPaymentBtn').disabled = false;

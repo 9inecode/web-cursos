@@ -2,8 +2,8 @@
 session_start();
 require_once '../config/db.php';
 
-// Verificar si es admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+// Verificar si es admin (usuario ID = 1)
+if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != 1) {
     header('Location: ../login.php');
     exit();
 }
@@ -72,6 +72,10 @@ $recent_videos = $pdo->query("SELECT * FROM videos ORDER BY created_at DESC LIMI
                     <a href="manage-users.php" class="action-card">
                         <h4>Gestionar Usuarios</h4>
                         <p>Administrar usuarios del sistema</p>
+                    </a>
+                    <a href="payment-management.php" class="action-card">
+                        <h4>Gestionar Pagos</h4>
+                        <p>Aprobar o rechazar comprobantes de pago</p>
                     </a>
                 </div>
             </div>

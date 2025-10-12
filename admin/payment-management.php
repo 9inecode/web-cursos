@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Obtener usuarios con pagos pendientes
 $stmt = $pdo->query("
-    SELECT id, username, email, payment_status, payment_date, created_at 
+    SELECT id, username, email, payment_status, payment_reference, payment_date, created_at 
     FROM users 
     WHERE payment_status IN ('pending', 'failed') 
     ORDER BY created_at DESC
@@ -35,7 +35,7 @@ $pending_users = $stmt->fetchAll();
 
 // Obtener usuarios con pagos completados (últimos 10)
 $stmt = $pdo->query("
-    SELECT id, username, email, payment_status, payment_date 
+    SELECT id, username, email, payment_status, payment_reference, payment_date 
     FROM users 
     WHERE payment_status = 'completed' 
     ORDER BY payment_date DESC 
@@ -245,6 +245,7 @@ $completed_users = $stmt->fetchAll();
                             <th>Usuario</th>
                             <th>Email</th>
                             <th>Estado</th>
+                            <th>Comprobante</th>
                             <th>Fecha Registro</th>
                             <th>Acciones</th>
                         </tr>
@@ -260,8 +261,26 @@ $completed_users = $stmt->fetchAll();
                                         <?php echo ucfirst($user['payment_status']); ?>
                                     </span>
                                 </td>
+                                <td>
+                                    <?php if ($user['payment_reference']): ?>
+                                        <a href="../<?php echo htmlspecialchars($user['payment_reference']); ?>" 
+                                           target="_blank" 
+                                           class="btn" 
+                                           style="background: #4299e1; color: white; font-size: 0.75rem;">
+                                            📄 Ver Comprobante
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color: #a0aec0;">Sin comprobante</span>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?php echo date('d/m/Y H:i', strtotime($user['created_at'])); ?></td>
                                 <td>
+                                    <a href="view-payment.php?id=<?php echo $user['id']; ?>" 
+                                       class="btn" 
+                                       style="background: #4299e1; color: white; margin-bottom: 0.5rem;">
+                                        👁️ Ver Detalle
+                                    </a>
+                                    <br>
                                     <form method="POST" style="display: inline;">
                                         <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
                                         <button type="submit" name="action" value="approve_payment" class="btn btn-approve">
@@ -292,6 +311,7 @@ $completed_users = $stmt->fetchAll();
                             <th>Usuario</th>
                             <th>Email</th>
                             <th>Estado</th>
+                            <th>Comprobante</th>
                             <th>Fecha Pago</th>
                         </tr>
                     </thead>
@@ -305,6 +325,18 @@ $completed_users = $stmt->fetchAll();
                                     <span class="status-badge status-completed">
                                         Completado
                                     </span>
+                                </td>
+                                <td>
+                                    <?php if ($user['payment_reference']): ?>
+                                        <a href="../<?php echo htmlspecialchars($user['payment_reference']); ?>" 
+                                           target="_blank" 
+                                           class="btn" 
+                                           style="background: #48bb78; color: white; font-size: 0.75rem;">
+                                            📄 Ver Comprobante
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color: #a0aec0;">Sin comprobante</span>
+                                    <?php endif; ?>
                                 </td>
                                 <td><?php echo $user['payment_date'] ? date('d/m/Y H:i', strtotime($user['payment_date'])) : 'N/A'; ?></td>
                             </tr>
