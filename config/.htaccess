@@ -1,0 +1,7 @@
+# Protección del directorio config
+Options -Indexes
+
+# Denegar acceso directo a archivos PHP
+<Files "*.php">
+    Require all denied
+</Files>

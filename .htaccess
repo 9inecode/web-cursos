@@ -1,0 +1,15 @@
+# Configuración de seguridad básica para CrowDojo Academy
+
+# Deshabilitar listado de directorios
+Options -Indexes
+
+# Protección de archivos sensibles
+<FilesMatch "\.(log|sql|bak|backup|old|tmp|temp)$">
+    Require all denied
+</FilesMatch>
+
+# Headers de seguridad básicos
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options SAMEORIGIN
+</IfModule>

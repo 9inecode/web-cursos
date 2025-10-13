@@ -3,6 +3,16 @@ config/email-credentials.php
 config/db_local.php
 config/config_local.php
 
+# Archivos de configuración con contraseñas reales
+config/*credentials*
+config/*password*
+config/*secret*
+
+# Archivos de seguridad y testing
+security-check.php
+test-site.php
+.htaccess.minimal
+
 # Logs
 logs/
 *.log

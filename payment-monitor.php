@@ -178,6 +178,23 @@ $payment_url = "https://www.posdigital.com.py/payment/operation?hash=1157394";
             transform: none;
         }
 
+        .btn-alternative {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-alternative:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
         .instructions {
             background: #e6fffa;
             border-left: 4px solid #38b2ac;
@@ -278,6 +295,15 @@ $payment_url = "https://www.posdigital.com.py/payment/operation?hash=1157394";
             <button onclick="checkPaymentStatus()" class="btn btn-secondary" id="checkPaymentBtn" disabled>
                 🔄 Verificar Pago
             </button>
+        </div>
+
+        <div style="margin: 1rem 0; text-align: center;">
+            <a href="payment.php" class="btn btn-alternative">
+                🏦 Otros Métodos de Pago
+            </a>
+            <p style="font-size: 0.85rem; color: #718096; margin-top: 0.5rem;">
+                Transferencia bancaria • Personal Pay
+            </p>
         </div>
 
         <div class="window-status" id="windowStatus">

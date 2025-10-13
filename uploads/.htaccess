@@ -1,0 +1,17 @@
+# Protección del directorio uploads
+Options -Indexes
+
+# Permitir solo imágenes y PDFs
+<FilesMatch "\.(jpg|jpeg|png|pdf)$">
+    Require all granted
+</FilesMatch>
+
+# Denegar todo lo demás
+<FilesMatch "\.">
+    Require all denied
+</FilesMatch>
+
+# Permitir específicamente los tipos de archivo deseados
+<FilesMatch "\.(jpg|jpeg|png|pdf)$">
+    Require all granted
+</FilesMatch>
