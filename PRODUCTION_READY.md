@@ -66,7 +66,7 @@ $payment_url = "https://www.posdigital.com.py/payment/operation?hash=1157394";
 7. **Confirmación** → Acceso completo al curso
 
 ### **👨‍💼 Administrador:**
-1. **Login** → admin@hackademia.local
+1. **Login** → admin@crowdojo.local
 2. **Panel** → `/admin/payment-management.php`
 3. **Gestión** → Aprobar/rechazar pagos
 4. **Monitoreo** → Estadísticas y usuarios

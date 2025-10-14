@@ -68,7 +68,7 @@ https://tu-dominio.com/webhook-posdigital.php
 - ✅ Lista de pagos pendientes
 - ✅ Aprobación/rechazo con un click
 - ✅ Historial de pagos completados
-- ✅ Acceso: http://hackademia.local/admin/payment-management.php
+- ✅ Acceso: http://crowdojo.local/admin/payment-management.php
 
 ### **📡 Webhook Automático**:
 - ✅ Recibe notificaciones de PosDigital

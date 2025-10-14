@@ -35,9 +35,10 @@ $videos = $stmt->fetchAll();
         }
 
         .admin-navbar {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 1rem;
             color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .container {
@@ -76,28 +77,34 @@ $videos = $stmt->fetchAll();
         .btn {
             display: inline-block;
             padding: 8px 16px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             color: white;
             font-weight: bold;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .btn-edit {
-            background-color: #f1c40f;
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
         }
 
         .btn-delete {
-            background-color: #e74c3c;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
 
-        .btn-edit:hover {
-            background-color: #f39c12;
+        .btn-success {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
-        .btn-delete:hover {
-            background-color: #c0392b;
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
         }
 
         .video-title {

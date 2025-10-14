@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+    ServerName crowdojo.local
+    DocumentRoot /var/www/html/crowdojo
+    
+    <Directory /var/www/html/crowdojo>
+        AllowOverride All
+        Require all granted
+    </Directory>
+    
+    ErrorLog ${APACHE_LOG_DIR}/crowdojo_error.log
+    CustomLog ${APACHE_LOG_DIR}/crowdojo_access.log combined
+</VirtualHost>

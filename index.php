@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             
             <div style="text-align: center; margin: 40px 0;">
-                <a href="http://hackademia.local/register.php?email=' . urlencode($email) . '" 
+                <a href="http://crowdojo.local/register.php?email=' . urlencode($email) . '" 
                    style="display: inline-block; padding: 14px 28px; background-color: #667eea; color: #ffffff; 
                           text-decoration: none; border-radius: 5px; font-weight: bold;">
                     🚀 Entrar al Dojo

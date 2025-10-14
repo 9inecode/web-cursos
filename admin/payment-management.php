@@ -2,8 +2,8 @@
 session_start();
 require_once '../config/db.php';
 
-// Verificar si es admin (simplificado)
-if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != 1) {
+// Verificar si es admin
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header('Location: ../login.php');
     exit();
 }

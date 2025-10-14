@@ -27,15 +27,15 @@
 - **Contraseña**: hackademia_pass
 
 ### Acceso Local
-- **URL**: http://hackademia.local
-- **Directorio web**: /var/www/html/hackademia/
+- **URL**: http://crowdojo.local
+- **Directorio web**: /var/www/html/crowdojo/
 
 ## 👤 Usuarios de Prueba
 
 | Email | Contraseña | Rol |
 |-------|------------|-----|
-| admin@hackademia.local | password | Admin con acceso completo |
-| test@hackademia.local | password | Usuario básico |
+| admin@crowdojo.local | password | Admin con acceso completo |
+| test@crowdojo.local | password | Usuario básico |
 
 ## 🛠️ Comandos Útiles
 

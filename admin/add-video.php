@@ -116,9 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .admin-navbar {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 1rem;
             color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .container {
@@ -159,15 +160,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             display: inline-block;
             padding: 0.8rem 1.5rem;
             margin: 0.5rem;
-            border-radius: 4px;
+            border-radius: 8px;
             text-decoration: none;
             color: white;
             font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-primary { background-color: #3498db; }
-        .btn-success { background-color: #2ecc71; }
-        .btn-danger { background-color: #e74c3c; }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary { 
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+        .btn-success { 
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+        .btn-danger { 
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
 
         .form-container {
             background: white;

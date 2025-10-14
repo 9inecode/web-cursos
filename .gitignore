@@ -24,10 +24,14 @@ logs/
 # Archivos de backup
 backup/
 
-# Archivos de prueba
+# Archivos de prueba y debug
 test-*.php
 debug-*.php
 diagnose-*.php
+quick-login-*.php
+fix-*.php
+update-*.php
+setup-*.php
 
 # Uploads de usuarios
 uploads/payments/*
@@ -49,3 +53,18 @@ Thumbs.db
 .env
 .env.local
 .env.production
+
+# Configuración local de Apache
+*.conf
+!crowdojo.conf.example
+
+# Archivos de configuración del sistema
+/etc/
+hosts.local
+
+# Archivos con información sensible del sistema
+ADMIN_SYSTEM_COMPLETE.md
+DOMAIN_CHANGE_SUMMARY.md
+
+# Scripts de configuración local
+start_dev.sh
